@@ -1,0 +1,31 @@
+{
+    "name": "rai79/mvc",
+    "description": "MVC",
+    "type": "project",
+    "license": "GPL",
+    "authors": [
+        {
+            "name": "Alexey Rudel",
+            "email": "rai79@mail.ru"
+        }
+    ],
+    "autoload": {
+        "psr-4":
+        {
+            "App\\": "app/"
+        }
+    },
+    "require": {
+        "symfony/dom-crawler": "^4.1",
+        "symfony/css-selector": "^4.1",
+        "twig/twig": "^2.4",
+        "symfony/filesystem": "^4.1",
+        "symfony/dotenv": "^4.1",
+        "nesbot/carbon": "^1.30",
+        "intervention/image": "^2.4",
+        "illuminate/database": "^5.6",
+        "fzaninotto/faker": "^1.7",
+        "phpunit/phpunit": "^7.2",
+        "wixel/gump": "^1.5"
+    }
+}

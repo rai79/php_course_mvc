@@ -1,0 +1,33 @@
+{% extends "base.twig" %}
+{% block styles %}
+    <link href="/css/bootstrap.min.css" rel="stylesheet">
+    <link href="/css/starter-template.css" rel="stylesheet">
+{% endblock %}
+{% block navigation %}
+    <li><a href="\main\logout">Выход</a></li>
+    <li class="active"><a href="\image">Загрузить файл</a></li>
+    <li><a href="\users">Список пользователей</a></li>
+    <li><a href="\files">Список файлов</a></li>
+{% endblock %}
+
+{% block content %}
+    <div class="container">
+
+        <div class="form-container">
+            <form class="form-horizontal row d-flex justify-content-center" action="\image\download" method="post" enctype="multipart/form-data">
+                <p>Выберите файл для загрузки</p>
+                <div class="form-group">
+                    <div class="col-md-12">
+                        <input type="file" name = "filename" class="form-control" id="inputfile" placeholder="Файл">
+                    </div>
+                </div>
+                <div class="form-group">
+                    <div class="col-md-12">
+                        <button type="submit" class="btn btn-default">Загрузить</button>
+                    </div>
+                </div>
+            </form>
+        </div>
+
+    </div><!-- /.container -->
+{% endblock %}

@@ -1,0 +1,62 @@
+{% extends "base.twig" %}
+{% block styles %}
+    <link href="../../css/bootstrap.min.css" rel="stylesheet">
+    <link href="../../css/starter-template.css" rel="stylesheet">
+{% endblock %}
+
+{% block navigation %}
+    <li><a href="\main\logout">Выход</a></li>
+    <li><a href="\image">Загрузить файл</a></li>
+    <li class="active"><a href="\users">Список пользователей</a></li>
+    <li><a href="\files">Список файлов</a></li>
+{% endblock %}
+
+{% block content %}
+    <div class="container">
+        <div class="row d-flex justify-content-center" style="margin: 20px">
+            <div class="col-sm-6">
+                <div class="text-center" >Сортировать по возросту</div>
+                <div class="input-group-btn text-center">
+                    <a class="btn btn-default" href="\admin\ageasc" style="margin: 4px">По возростанию</a>
+                    <a class="btn btn-default" href="\admin\agedesc" style="margin: 4px">По убыванию</a>
+                </div>
+            </div>
+            <div class="col-sm-6">
+                <div class="text-center" >Сортировать по имени</div>
+                <div class="input-group-btn text-center">
+                    <a class="btn btn-default" href="\admin\nameasc" style="margin: 4px">По возростанию</a>
+                    <a class="btn btn-default" href="\admin\namedesc" style="margin: 4px">По убыванию</a>
+                </div>
+            </div>
+        </div>
+        <table class="table table-bordered">
+            <tr>
+                <th>Пользователь(логин)</th>
+                <th>Имя</th>
+                <th>Возраст</th>
+                <th>Email</th>
+                <th>Совершеннолетний</th>
+                <th>Описание</th>
+                <th>Фотография</th>
+                <th>Действия</th>
+            </tr>
+            {% for user in data['users'] %}
+            <tr>
+                <td>{{user['login']}}</td>
+                <td>{{user['name']}}</td>
+                <td>{{user['age']}}</td>
+                <td>{{user['email']}}</td>
+                <td>{% if user['age'] > 18 %} Да {% endif %}{% if user['age'] <= 18 %} Нет {% endif %}</td>
+                <td>{{user['description']}}</td>
+                <td><img src="{{user['avatar']}}" alt=""></td>
+                <td>
+                    <a href="\admin\delete\{{user['id']}}">Удалить пользователя</a>
+                    <hr>
+                    <a href="\admin\edit\{{user['id']}}">Редактировать пользователя</a>
+                </td>
+            </tr>
+            {% endfor %}
+        </table>
+
+    </div><!-- /.container -->
+{% endblock %}
